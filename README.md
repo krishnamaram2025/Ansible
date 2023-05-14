@@ -44,21 +44,10 @@ Execution Flow
 
 step 1: clone repo
 
-$git clone https://github.com/krishnamaram2/configuration-manager.git
+$git clone https://github.com/krishnamaram2025/ansible.git && cd ansible
 
 Step 2: run playbooks
 
-$cd configuration-manager/src/webapp
-
-$ansible-playbook -i hosts plays/webapp.yml
-
-$cd configuration-manager/src/devstack
-
-$ansible-playbook -i hosts plays/devstack.yml
-
-$cd configuration-manager/src/opsstack
-
-$ansible-playbook -i hosts plays/opsstack.yml
-
+$ansible-playbook -i hosts plays/mysql_playbook.yml
 
 
