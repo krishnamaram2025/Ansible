@@ -1,0 +1,5 @@
+- hosts: localhost
+  become: yes
+  roles:
+      - {  role: ~/configuration-manager/src/webapp/roles/krishna.mysql}
+      - {  role: ~/configuration-manager/src/webapp/roles/krishna-mysql}
