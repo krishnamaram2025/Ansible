@@ -48,6 +48,6 @@ $git clone https://github.com/krishnamaram2025/ansible.git && cd ansible
 
 Step 2: run playbooks
 
-$ansible-playbook -i hosts plays/mysql_playbook.yml
+$ansible-playbook -i hosts mysql/plays/mysql_playbook.yml
 
 
