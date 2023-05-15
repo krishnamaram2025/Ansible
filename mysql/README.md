@@ -17,11 +17,17 @@ Step 3: Import
 ```
 mysql -u ot39 -p bible < mysql/bible_db.sql
 ```
-Step 4: Login to MySQL 
+Step 4: Run Python scripts 
+```
+sudo yum install python3-pip -y
+pip3 intsall -r mysql/requirements.txt
+python3 mysql/mysql_python.py
+```
+Step 5: Login to MySQL 
 ```
 mysql -u ot39 -p bible
 ```
-Step 5: Export
+Step 6: Export
 ```
 mysqldump -u ot39 -p bible > mysql/bible_db.sql
 ```
