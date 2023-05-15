@@ -1,5 +1,5 @@
 - hosts: localhost
   become: yes
   roles:
-      - {  role: /home/centos/ansible/mysql/roles/krishna.mysql}
-      #- {  role: /home/centos/ansible/mysql/roles/krishna-mysql}
+      - {  role: /home/centos/ansible/mysql/roles/krishnamysql001}
+      - {  role: /home/centos/ansible/mysql/roles/krishnamysql002}
