@@ -1,0 +1,12 @@
+---  
+  - name: create database
+    mysql_db: name=bible state=present
+  - name: create mysql user
+    mysql_user:
+       name: ot39
+       password: NT27
+       priv: '*.*:ALL'
+       #host_all: yes
+       state: present
+       login_user: root
+       login_password: "{{mysql_root_password}}"
