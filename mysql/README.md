@@ -13,10 +13,16 @@ Step 2: run playbooks
 ```
 ansible-playbook -i hosts mysql/plays/mysql_playbook.yml
 ```
-Step 3: Login to MySQL 
+Step 3: Import
+```
+mysql -u ot39 -p bible < mysql/bible.sql
+```
+Step 4: Login to MySQL 
 ```
 mysql -u ot39 -p bible
 ```
-Export: $mysqldump -u user_name -p bible > bible.sql
+Step 5: Export
+```
+mysqldump -u ot39 -p bible > mysql/bible.sql
+```
 
-Import: $mysql -u user_name -p bible < bible.sql
