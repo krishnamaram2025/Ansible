@@ -2,4 +2,4 @@
   become: yes
   roles:
       - {  role: /home/centos/ansible/mysql/roles/krishna.mysql}
-      - {  role: /home/centos/ansible/mysql/roles/krishna-mysql}
+      #- {  role: /home/centos/ansible/mysql/roles/krishna-mysql}
