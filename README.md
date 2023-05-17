@@ -37,17 +37,3 @@ Case 2: automation
  cat /home/centos/.ssh/id_rsa.pub >> /home/centos/.ssh/authorized_keys
 
  ssh -o StrictHostKeyChecking=no centos@localhost
-
-
-Execution Flow
-======================
-
-step 1: clone repo
-
-$git clone https://github.com/krishnamaram2025/ansible.git && cd ansible
-
-Step 2: run playbooks
-
-$ansible-playbook -i hosts mysql/plays/mysql_playbook.yml
-
-
