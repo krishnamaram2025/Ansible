@@ -1,7 +1,3 @@
-Project Title
-========================
-Ansible is used for Software configuration purpose
-
 Execution Flow
 ======================
 
