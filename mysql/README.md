@@ -16,8 +16,8 @@ mysql -u ot39 -p bible < mysql/bible_db.sql
 Step 4: Run Python scripts 
 ```
 sudo yum install python3-pip -y
-pip3 intsall -r mysql/requirements.txt
-python3 mysql/mysql_python.py
+pip3 intsall -r mysql/python/requirements.txt
+python3 mysql/python/mysql_python.py
 ```
 Step 5: Login to MySQL 
 ```
