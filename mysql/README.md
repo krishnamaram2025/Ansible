@@ -28,3 +28,4 @@ Step 6: Export
 mysqldump -u ot39 -p bible > mysql/bible_db.sql
 ```
 
+python3 python_automation/csit_gateway.py --cluster_data cluster_data.json --actions provision
