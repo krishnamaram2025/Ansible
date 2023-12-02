@@ -37,3 +37,8 @@ Case 2: automation
  cat /home/centos/.ssh/id_rsa.pub >> /home/centos/.ssh/authorized_keys
 
  ssh -o StrictHostKeyChecking=no centos@localhost
+
+# Execution Flow
+```
+git clone https://github.com/krishnamaram2025/Ansible.git && cd Ansible && ansible-playbook jenkins.yml
+```
