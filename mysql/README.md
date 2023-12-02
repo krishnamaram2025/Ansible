@@ -3,11 +3,11 @@ Execution Flow
 
 step 1: clone repo
 ```
-git clone https://github.com/krishnamaram2025/ansible.git && cd ansible
+git clone https://github.com/krishnamaram2025/Ansible.git && cd Ansible
 ```
 Step 2: run playbooks
 ```
-ansible-playbook -i hosts mysql/plays/mysql_playbook.yml
+Ansible-playbook -i hosts mysql/plays/mysql_playbook.yml
 ```
 Step 3: Import
 ```
