@@ -2,10 +2,14 @@ Project Title
 ========================
 Ansible is used for Software configuration purpose
 
-
- Pre-Requisites
+Pre-Requisites
 ===============================
-Case 1: manual 
+* Step 1: Install ansible
+```
+sudo yum install epel-release -y
+sudo yum install ansible -y
+```
+* Case 1: manual 
 
 step 1: switch to root user
 
@@ -27,8 +31,7 @@ $ssh-keygen
 
 $ssh-copy-id centos@localhost
 
-
-Case 2: automation
+* Case 2: automation
 
  #!/bin/bash
  
