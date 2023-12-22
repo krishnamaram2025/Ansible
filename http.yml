@@ -1,0 +1,30 @@
+---
+- name: this playbook is to install software packages for Appche HTTP server
+  hosts: localhost
+  become: true
+  tasks:
+    - name: install http server
+      yum: name=httpd state=latest
+
+    - name: restart http server
+      service:
+          name: httpd
+          state: started
+
+    - name: cloning git repo
+      git: repo=https://github.com/devops2023q2/frontend.git
+              dest=/home/centos/frontend
+
+
+    - name: deploy dist folder
+      copy:  src=/home/centos/frontend/index.html dest=/var/www/html/
+
+    - name: change ownership 
+      file: path=/var/www/html/ state=directory recurse=yes owner=centos group=centos mode=0755
+  
+    # - name: change localhost to ip in /var/ww/html/dist/main.js file
+    #   replace:
+    #     path: /var/www/html/dist/main.js
+    #     regexp: 'localhost'
+    #     replace: '34.231.57.92'
+

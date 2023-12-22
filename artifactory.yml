@@ -1,0 +1,25 @@
+---
+- name: this playbook is to install Artifactory packages
+  hosts: localhost
+  become: true
+  tasks:
+    - name: Install openjdk
+      yum: 
+        name: java-1.8.0-openjdk-devel 
+        state: present
+    - name: download Artifactory repo
+      get_url: 
+        url: https://releases.jfrog.io/artifactory/artifactory-rpms/artifactory-rpms.repo
+        dest: /etc/yum.repos.d/artifactory-rpms.repo
+    - name: Install Artifactory
+      yum:
+        name: jfrog-artifactory-oss
+        state: latest
+    - name: daemon-reload to pick up config changes
+      ansible.builtin.systemd:
+        daemon_reload: yes
+    - name: Start Artifactory
+      ansible.builtin.systemd:
+        name: artifactory
+        state: started
+        enabled: yes

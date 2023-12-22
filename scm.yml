@@ -1,0 +1,18 @@
+---
+- name: this playbook is to install software packages
+  hosts: localhost
+  become: true
+  tasks:
+    - name: this task is to install pip
+      yum:
+        name: python3-pip 
+    - name: this task to install djgao package
+      pip:
+        name: django
+        executable: pip3
+    - name: Gunicorn install
+      pip:
+        name: gunicorn
+        executable: pip3
+
+

@@ -1,0 +1,21 @@
+- name: this playbook is to install HAProxy packages
+  hosts: localhost
+  become: true
+  tasks:
+    - name: Install HAProxy package
+      yum:
+        name: haproxy
+        state: present
+    - name: cloning git repo
+      git: 
+        repo: https://github.com/devops2023q2/ansible.git
+        dest: /home/centos/ansible
+    - name: Copy HAProxy configuration file
+      copy:
+        src: /home/centos/ansible/haproxy.cfg
+        dest: /etc/haproxy/haproxy.cfg
+    - name: Start HAProxy service
+      systemd:
+        name: haproxy
+        enabled: yes
+        state: started
