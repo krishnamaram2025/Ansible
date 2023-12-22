@@ -1,0 +1,19 @@
+---
+- name: Install Nginx
+  hosts: localhost
+  become: true
+  tasks:
+    - name: stop selinux
+      command: setsebool -P httpd_enable_homedirs 1
+    - name: stop selinux
+      command: setenforce 0
+    - name: Install Nginx package
+      yum:
+        name: nginx
+        state: present
+    - name: restart nginx
+      command: systemctl restart nginx
+    - name: reload
+      command: systemctl daemon-reload
+    - name: status
+      command: systemctl status nginx
