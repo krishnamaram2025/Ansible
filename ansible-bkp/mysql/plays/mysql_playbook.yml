@@ -1,0 +1,5 @@
+- hosts: localhost
+  become: yes
+  roles:
+      - {  role: /home/centos/ansible/mysql/roles/role1}
+      - {  role: /home/centos/ansible/mysql/roles/role2}

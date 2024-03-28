@@ -1,0 +1,105 @@
+---
+- name: Install and configure MySQL Server
+  hosts: mysql_servers
+  become: true
+
+  tasks:
+    - name: Install MySQL Server
+      yum:
+        name: mysql-server
+        state: present
+
+    - name: Start MySQL service
+      service:
+        name: mysqld
+        state: started
+        enabled: true
+
+    ---
+- name: Secure MySQL Server
+  hosts: mysql_servers
+  become: true
+
+  tasks:
+    - name: Set MySQL root password
+      mysql_user:
+        name: root
+        password: "{{ mysql_root_password }}"
+        login_user: root
+        login_password: "{{ mysql_root_password }}"
+        host: localhost
+        check_implicit_admin: yes
+        update_password: always
+
+    - name: Remove anonymous MySQL users
+      mysql_user:
+        name: ''
+        host_all: yes
+        state: absent
+        login_user: root
+        login_password: "{{ mysql_root_password }}"
+        check_implicit_admin: yes
+
+    - name: Remove MySQL test database
+      mysql_db:
+        name: test
+        state: absent
+        login_user: root
+        login_password: "{{ mysql_root_password }}"
+        check_implicit_admin: yes
+
+    - name: Reload MySQL service
+      service:
+        name: mysqld
+        state: reloaded
+        ---
+- name: Log in to MySQL Server
+  hosts: localhost
+  become: true
+
+  tasks:
+    - name: Execute MySQL shell command
+      mysql_shell:
+        login_user: "{{ mysql_user }}"
+        login_password: "{{ mysql_password }}"
+        login_host: "{{ mysql_host }}"
+        login_port: "{{ mysql_port }}"
+        database: "{{ mysql_database }}"
+        command: "{{ mysql_command }}"
+      register: mysql_output
+
+    - name: Print MySQL output
+      debug:
+        var: mysql_output.stdout_lines
+
+---
+- name: Create MySQL database and user
+  hosts: localhost
+  become: true
+
+  vars:
+    mysql_root_password: "your_mysql_root_password"
+
+  tasks:
+    - name: Install MySQL Python package
+      yum:
+        name: MySQL-python
+        state: present
+
+    - name: Create MySQL database
+      mysql_db:
+        name: indigo
+        state: present
+        login_user: root
+        login_password: "{{ mysql_root_password }}"
+
+    - name: Create MySQL user
+      mysql_user:
+        name: cloud
+        password: "your_cloud_password"
+        priv: "*.*:ALL"
+        host: localhost
+        state: present
+        login_user: root
+        login_password: "{{ mysql_root_password }}"
+
